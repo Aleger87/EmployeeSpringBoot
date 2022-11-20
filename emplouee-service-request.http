@@ -10,6 +10,8 @@ Content-Type: application/json
   "department": 1,
   "salary": 1000
 }
+
+
 ### Получение суммы зарплат сотрудников
 GET http://localhost:8080/employees/salary/sum
 

@@ -4,9 +4,7 @@ import com.example.employee.model.Employee;
 import com.example.employee.record.EmployeeRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class EmployeeService {
@@ -28,5 +26,19 @@ public class EmployeeService {
 
     public int getSalarySum() {
       return this.employees.values().stream().mapToInt(e -> e.getSalary()).sum();
+    }
+
+    public int getSalaryMin() {
+        return this.employees.values().stream().mapToInt(e -> e.getSalary()).min().getAsInt();
+    }
+
+    public int getSalaryMax() {
+        return this.employees.values().stream().mapToInt(e -> e.getSalary()).max().getAsInt();
+    }
+
+    public Collection<Employee> getSalaryAvg() {
+        Collection<Employee> highSalary = this.employees.values().stream()
+                .filter(e -> e.getSalary() > this.employees.values().stream().mapToDouble(y->y.getSalary()).average().getAsDouble()).toList();
+        return highSalary;
     }
 }

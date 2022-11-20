@@ -24,12 +24,27 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public Employee createEmpoyee(@RequestBody EmployeeRequest employeeRequest) {
+    public Employee createEmployee(@RequestBody EmployeeRequest employeeRequest) {
         return this.employeeService.addEmployee(employeeRequest);
     }
 
     @GetMapping("employees/salary/sum")
     public int getSalarySum() {
       return   this.employeeService.getSalarySum();
+    }
+
+    @GetMapping("employees/salary/min")
+    public int getSalaryMin() {
+      return   this.employeeService.getSalaryMin();
+    }
+
+    @GetMapping("employees/salary/max")
+    public int getSalaryMax() {
+      return   this.employeeService.getSalaryMax();
+    }
+
+    @GetMapping("employees/high-salary")
+    public Collection<Employee> getSalaryAvg() {
+      return   this.employeeService.getSalaryAvg();
     }
 }
