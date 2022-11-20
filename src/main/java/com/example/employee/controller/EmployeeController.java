@@ -1,5 +1,6 @@
 package com.example.employee.controller;
 
+import com.example.employee.EmployeeApplication;
 import com.example.employee.model.Employee;
 import com.example.employee.record.EmployeeRequest;
 import com.example.employee.service.EmployeeService;
@@ -34,12 +35,12 @@ public class EmployeeController {
     }
 
     @GetMapping("employees/salary/min")
-    public int getSalaryMin() {
+    public Employee getSalaryMin() {
       return   this.employeeService.getSalaryMin();
     }
 
     @GetMapping("employees/salary/max")
-    public int getSalaryMax() {
+    public Employee getSalaryMax() {
       return   this.employeeService.getSalaryMax();
     }
 

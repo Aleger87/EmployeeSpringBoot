@@ -5,6 +5,7 @@ import com.example.employee.record.EmployeeRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 @Service
 public class EmployeeService {
@@ -28,12 +29,19 @@ public class EmployeeService {
       return this.employees.values().stream().mapToInt(e -> e.getSalary()).sum();
     }
 
-    public int getSalaryMin() {
-        return this.employees.values().stream().mapToInt(e -> e.getSalary()).min().getAsInt();
+    public Employee getSalaryMin() {
+        Comparator<Employee> comparator = Comparator.comparing( Employee::getSalary);
+        Employee minObject = this.employees.values().stream().min(comparator).get();
+        return minObject;
+
+
     }
 
-    public int getSalaryMax() {
-        return this.employees.values().stream().mapToInt(e -> e.getSalary()).max().getAsInt();
+    public Employee getSalaryMax() {
+        Comparator<Employee> comparator = Comparator.comparing( Employee::getSalary);
+        Employee maxObject = this.employees.values().stream().max(comparator).get();
+        return maxObject;
+
     }
 
     public Collection<Employee> getSalaryAvg() {
