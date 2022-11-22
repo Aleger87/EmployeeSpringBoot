@@ -1,11 +1,9 @@
 package com.example.employee.service;
-
 import com.example.employee.model.Employee;
 import com.example.employee.record.EmployeeRequest;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
-import java.util.stream.Stream;
 
 @Service
 public class EmployeeService {
@@ -17,9 +15,6 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(EmployeeRequest employeeRequest) {
-        if (employeeRequest.getFirstName() == null || employeeRequest.getLastName() == null) {
-            throw new IllegalArgumentException("не заполнено имя");
-        }
         Employee employee = new Employee(employeeRequest.getFirstName(), employeeRequest.getLastName(), employeeRequest.getDepartment(), employeeRequest.getSalary());
         this.employees.put(employee.getId(), employee);
         return employee;

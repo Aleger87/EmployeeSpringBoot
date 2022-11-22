@@ -1,5 +1,7 @@
 package com.example.employee.record;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class EmployeeRequest {
     private  String firstName;
     private  String lastName;
@@ -11,7 +13,8 @@ public class EmployeeRequest {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        checkData(firstName);
+        this.firstName = StringUtils.capitalize(firstName);
     }
 
     public String getLastName() {
@@ -19,7 +22,8 @@ public class EmployeeRequest {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        checkData(lastName);
+        this.lastName = StringUtils.capitalize(lastName);
     }
 
     public int getDepartment() {
@@ -36,5 +40,11 @@ public class EmployeeRequest {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    private void checkData(String string) {
+        if (StringUtils.isBlank(string) || !StringUtils.isAlpha(string)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
