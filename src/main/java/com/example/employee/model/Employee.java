@@ -1,7 +1,9 @@
 package com.example.employee.model;
 
+import java.util.Objects;
+
 public class Employee {
-    private static int count;
+    private static int count=1;
     private final String firstName;
     private final String lastName;
     private final int department;
@@ -36,14 +38,14 @@ public class Employee {
         return id;
     }
 
+
+
     @Override
     public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
+        return  "{firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", department='" + department + '\'' +
+                ", department=" + department +
                 ", salary=" + salary +
-                ", id=" + id +
-                '}';
+                ", id=" + id + "}";
     }
 }
